@@ -81,6 +81,7 @@ namespace Sinx.AspNetCore.Http
 					if (requiresEscaping)
 					{
 						// the current segment requires escape
+						// ReSharper disable once ConditionIsAlwaysTrueOrFalse
 						if (buffer == null)
 						{
 							buffer = new StringBuilder(Value.Length * 3);
@@ -139,6 +140,7 @@ namespace Sinx.AspNetCore.Http
 					}
 				}
 
+				// ReSharper disable once PossibleNullReferenceException
 				return buffer.ToString();
 			}
 		}
@@ -160,17 +162,18 @@ namespace Sinx.AspNetCore.Http
 		/// </summary>
 		/// <param name="uri">The Uri object</param>
 		/// <returns>The resulting PathString</returns>
-		//public static PathString FromUriComponent(Uri uri)
-		//{
-		//	if (uri == null)
-		//	{
-		//		throw new ArgumentNullException(nameof(uri));
-		//	}
+		public static PathString FromUriComponent(Uri uri)
+		{
+			if (uri == null)
+			{
+				throw new ArgumentNullException(nameof(uri));
+			}
 
-		//	// REVIEW: what is the exactly correct thing to do?
-		//	return new PathString("/" + uri.GetComponents(UriComponents.Path, UriFormat.Unescaped));
-		//}
+			// REVIEW: what is the exactly correct thing to do?
+			return new PathString("/" + uri.GetComponents(UriComponents.Path, UriFormat.Unescaped));
+		}
 
+		#region StartWith
 		/// <summary>
 		/// Determines whether the beginning of this <see cref="PathString"/> instance matches the specified <see cref="PathString"/>.
 		/// </summary>
@@ -274,33 +277,34 @@ namespace Sinx.AspNetCore.Http
 		//	matched = Empty;
 		//	return false;
 		//}
+		#endregion
 
 		/// <summary>
 		/// Adds two PathString instances into a combined PathString value. 
 		/// </summary>
 		/// <returns>The combined PathString value</returns>
-		//public PathString Add(PathString other)
-		//{
-		//	if (HasValue &&
-		//		other.HasValue &&
-		//		Value[Value.Length - 1] == '/')
-		//	{
-		//		// If the path string has a trailing slash and the other string has a leading slash, we need
-		//		// to trim one of them.
-		//		return new PathString(Value + other.Value.Substring(1));
-		//	}
+		public PathString Add(PathString other)
+		{
+			if (HasValue &&
+				other.HasValue &&
+				Value[Value.Length - 1] == '/')
+			{
+				// If the path string has a trailing slash and the other string has a leading slash, we need
+				// to trim one of them.
+				return new PathString(Value + other.Value.Substring(1));
+			}
 
-		//	return new PathString(Value + other.Value);
-		//}
+			return new PathString(Value + other.Value);
+		}
 
 		/// <summary>
 		/// Combines a PathString and QueryString into the joined URI formatted string value. 
 		/// </summary>
 		/// <returns>The joined URI formatted string value</returns>
-		//public string Add(QueryString other)
-		//{
-		//	return ToUriComponent() + other.ToUriComponent();
-		//}
+		public string Add(QueryString other)
+		{
+			return ToUriComponent() + other.ToUriComponent();
+		}
 
 		/// <summary>
 		/// Compares this PathString value to another value. The default comparison is StringComparison.OrdinalIgnoreCase.
@@ -318,37 +322,37 @@ namespace Sinx.AspNetCore.Http
 		/// <param name="other">The second PathString for comparison</param>
 		/// <param name="comparisonType">The StringComparison type to use</param>
 		/// <returns>True if both PathString values are equal</returns>
-		//public bool Equals(PathString other, StringComparison comparisonType)
-		//{
-		//	if (!HasValue && !other.HasValue)
-		//	{
-		//		return true;
-		//	}
-		//	return string.Equals(Value, other.Value, comparisonType);
-		//}
+		public bool Equals(PathString other, StringComparison comparisonType)
+		{
+			if (!HasValue && !other.HasValue)
+			{
+				return true;
+			}
+			return string.Equals(Value, other.Value, comparisonType);
+		}
 
 		/// <summary>
 		/// Compares this PathString value to another value. The default comparison is StringComparison.OrdinalIgnoreCase.
 		/// </summary>
 		/// <param name="obj">The second PathString for comparison.</param>
 		/// <returns>True if both PathString values are equal</returns>
-		//public override bool Equals(object obj)
-		//{
-		//	if (ReferenceEquals(null, obj))
-		//	{
-		//		return !HasValue;
-		//	}
-		//	return obj is PathString && Equals((PathString)obj);
-		//}
+		public override bool Equals(object obj)
+		{
+			if (ReferenceEquals(null, obj))
+			{
+				return !HasValue;
+			}
+			return obj is PathString && Equals((PathString)obj);
+		}
 
 		/// <summary>
 		/// Returns the hash code for the PathString value. The hash code is provided by the OrdinalIgnoreCase implementation.
 		/// </summary>
 		/// <returns>The hash code</returns>
-		//public override int GetHashCode()
-		//{
-		//	return (HasValue ? StringComparer.OrdinalIgnoreCase.GetHashCode(Value) : 0);
-		//}
+		public override int GetHashCode()
+		{
+			return (HasValue ? StringComparer.OrdinalIgnoreCase.GetHashCode(Value) : 0);
+		}
 
 		/// <summary>
 		/// Operator call through to Equals
@@ -356,10 +360,10 @@ namespace Sinx.AspNetCore.Http
 		/// <param name="left">The left parameter</param>
 		/// <param name="right">The right parameter</param>
 		/// <returns>True if both PathString values are equal</returns>
-		//public static bool operator ==(PathString left, PathString right)
-		//{
-		//	return left.Equals(right);
-		//}
+		public static bool operator ==(PathString left, PathString right)
+		{
+			return left.Equals(right);
+		}
 
 		/// <summary>
 		/// Operator call through to Equals
@@ -367,34 +371,34 @@ namespace Sinx.AspNetCore.Http
 		/// <param name="left">The left parameter</param>
 		/// <param name="right">The right parameter</param>
 		/// <returns>True if both PathString values are not equal</returns>
-		//public static bool operator !=(PathString left, PathString right)
-		//{
-		//	return !left.Equals(right);
-		//}
+		public static bool operator !=(PathString left, PathString right)
+		{
+			return !left.Equals(right);
+		}
 
 		/// <summary>
 		/// </summary>
 		/// <param name="left">The left parameter</param>
 		/// <param name="right">The right parameter</param>
 		/// <returns>The ToString combination of both values</returns>
-		//public static string operator +(string left, PathString right)
-		//{
-		//	// This overload exists to prevent the implicit string<->PathString converter from
-		//	// trying to call the PathString+PathString operator for things that are not path strings.
-		//	return string.Concat(left, right.ToString());
-		//}
+		public static string operator +(string left, PathString right)
+		{
+			// This overload exists to prevent the implicit string<->PathString converter from
+			// trying to call the PathString+PathString operator for things that are not path strings.
+			return string.Concat(left, right.ToString());
+		}
 
 		/// <summary>
 		/// </summary>
 		/// <param name="left">The left parameter</param>
 		/// <param name="right">The right parameter</param>
 		/// <returns>The ToString combination of both values</returns>
-		//public static string operator +(PathString left, string right)
-		//{
-		//	// This overload exists to prevent the implicit string<->PathString converter from
-		//	// trying to call the PathString+PathString operator for things that are not path strings.
-		//	return string.Concat(left.ToString(), right);
-		//}
+		public static string operator +(PathString left, string right)
+		{
+			// This overload exists to prevent the implicit string<->PathString converter from
+			// trying to call the PathString+PathString operator for things that are not path strings.
+			return string.Concat(left.ToString(), right);
+		}
 
 		/// <summary>
 		/// Operator call through to Add
@@ -402,10 +406,10 @@ namespace Sinx.AspNetCore.Http
 		/// <param name="left">The left parameter</param>
 		/// <param name="right">The right parameter</param>
 		/// <returns>The PathString combination of both values</returns>
-		//public static PathString operator +(PathString left, PathString right)
-		//{
-		//	return left.Add(right);
-		//}
+		public static PathString operator +(PathString left, PathString right)
+		{
+			return left.Add(right);
+		}
 
 		/// <summary>
 		/// Operator call through to Add
@@ -413,27 +417,27 @@ namespace Sinx.AspNetCore.Http
 		/// <param name="left">The left parameter</param>
 		/// <param name="right">The right parameter</param>
 		/// <returns>The PathString combination of both values</returns>
-		//public static string operator +(PathString left, QueryString right)
-		//{
-		//	return left.Add(right);
-		//}
+		public static string operator +(PathString left, QueryString right)
+		{
+			return left.Add(right);
+		}
 
 		/// <summary>
 		/// Implicitly creates a new PathString from the given string.
 		/// </summary>
 		/// <param name="s"></param>
-		//public static implicit operator PathString(string s)
-		//{
-		//	return new PathString(s);
-		//}
+		public static implicit operator PathString(string s)
+		{
+			return new PathString(s);
+		}
 
 		/// <summary>
 		/// Implicitly calls ToString().
 		/// </summary>
 		/// <param name="path"></param>
-		//public static implicit operator string(PathString path)
-		//{
-		//	return path.ToString();
-		//}
+		public static implicit operator string(PathString path)
+		{
+			return path.ToString();
+		}
 	}
 }

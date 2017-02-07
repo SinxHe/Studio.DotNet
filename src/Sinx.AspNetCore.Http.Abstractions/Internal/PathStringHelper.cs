@@ -4,7 +4,7 @@
 // ReSharper disable once CheckNamespace
 namespace Sinx.AspNetCore.Http.Internal
 {
-    internal class PathStringHelper
+    internal static class PathStringHelper
     {
         private static readonly bool[] ValidPathChars = {
             false, false, false, false, false, false, false, false,     // 0x00 - 0x07

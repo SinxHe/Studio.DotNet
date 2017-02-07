@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
     <AssemblyName>Sinx.AspNetCore.Http</AssemblyName>
@@ -9,15 +8,15 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
-
   <ItemGroup>
+    <ProjectReference Include="..\..\Sinx.Net.Http.Headers\Sinx.Net.Http.Headers.csproj" />
     <ProjectReference Include="..\Sinx.AspNetCore.Http.Abstractions\Sinx.AspNetCore.Http.Abstractions.csproj" />
     <ProjectReference Include="..\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="1.6.0" />
-    <PackageReference Include="Sinx.Net.Http.Headers" Version="1.0.0-*" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Internal\" />
+  </ItemGroup>
 </Project>

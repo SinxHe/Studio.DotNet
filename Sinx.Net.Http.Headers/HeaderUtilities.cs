@@ -11,6 +11,7 @@ namespace Sinx.Net.Http.Headers
 {
     public static class HeaderUtilities
     {
+		private static readonly int _int64MaxStringLength = 20;
         private static unsafe bool TryParseInt64FromHeaderValue(int startIndex, string headerValue, out long result)
         {
             // Trim leading whitespace
