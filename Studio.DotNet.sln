@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26127.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}"
 EndProject
@@ -10,23 +10,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Studio.DotNet.Api", "src\Studio.DotNet.Api\Studio.DotNet.Api.xproj", "{A985CD1F-7525-4F45-8FAE-D99F2961B67C}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sinx.AspNetCore.Http.Abstractions", "src\Sinx.AspNetCore.Http.Abstractions\Sinx.AspNetCore.Http.Abstractions.xproj", "{E3C78887-596F-45E2-BF02-A3B12C8C7818}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sinx.AspNetCore.Http.Features", "src\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.xproj", "{8D260C70-28F7-4D1B-AE62-41BF90917F72}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Studio.DotNet.Test", "src\Studio.DotNet.Test\Studio.DotNet.Test.xproj", "{B276EDD3-3F70-449E-B374-CAD43AA09FC6}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sinx.AspNetCore.Http", "src\Sinx.AspNetCore.Http\Sinx.AspNetCore.Http.xproj", "{F1A1D81C-4B22-4997-8E1C-BF20A0618BC9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HttpAbstractions", "HttpAbstractions", "{F9123B95-3FAD-4E88-B545-60647EB503D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SinxServer", "SinxServer", "{4EF5EA30-183A-4609-8BC8-B72B207E936D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Studio.DotNet.Server", "Studio.DotNet.Server\Studio.DotNet.Server.xproj", "{344A0892-8B86-4862-826E-C1FAD900A539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studio.DotNet.Api", "src\Studio.DotNet.Api\Studio.DotNet.Api.csproj", "{A985CD1F-7525-4F45-8FAE-D99F2961B67C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sinx.Net.Http.Headers", "Sinx.Net.Http.Headers\Sinx.Net.Http.Headers.xproj", "{4C6C35AF-1821-462F-A215-9B1E88BFEC08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AspNetCore.Http.Abstractions", "src\Sinx.AspNetCore.Http.Abstractions\Sinx.AspNetCore.Http.Abstractions.csproj", "{E3C78887-596F-45E2-BF02-A3B12C8C7818}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AspNetCore.Http.Features", "src\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj", "{8D260C70-28F7-4D1B-AE62-41BF90917F72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studio.DotNet.Test", "src\Studio.DotNet.Test\Studio.DotNet.Test.csproj", "{B276EDD3-3F70-449E-B374-CAD43AA09FC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AspNetCore.Http", "src\Sinx.AspNetCore.Http\Sinx.AspNetCore.Http.csproj", "{F1A1D81C-4B22-4997-8E1C-BF20A0618BC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studio.DotNet.Server", "Studio.DotNet.Server\Studio.DotNet.Server.csproj", "{344A0892-8B86-4862-826E-C1FAD900A539}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Net.Http.Headers", "Sinx.Net.Http.Headers\Sinx.Net.Http.Headers.csproj", "{4C6C35AF-1821-462F-A215-9B1E88BFEC08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,13 +67,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{F9123B95-3FAD-4E88-B545-60647EB503D5} = {E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}
+		{4EF5EA30-183A-4609-8BC8-B72B207E936D} = {E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}
 		{A985CD1F-7525-4F45-8FAE-D99F2961B67C} = {E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}
 		{E3C78887-596F-45E2-BF02-A3B12C8C7818} = {F9123B95-3FAD-4E88-B545-60647EB503D5}
 		{8D260C70-28F7-4D1B-AE62-41BF90917F72} = {F9123B95-3FAD-4E88-B545-60647EB503D5}
 		{B276EDD3-3F70-449E-B374-CAD43AA09FC6} = {E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}
 		{F1A1D81C-4B22-4997-8E1C-BF20A0618BC9} = {F9123B95-3FAD-4E88-B545-60647EB503D5}
-		{F9123B95-3FAD-4E88-B545-60647EB503D5} = {E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}
-		{4EF5EA30-183A-4609-8BC8-B72B207E936D} = {E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}
 		{344A0892-8B86-4862-826E-C1FAD900A539} = {4EF5EA30-183A-4609-8BC8-B72B207E936D}
 		{4C6C35AF-1821-462F-A215-9B1E88BFEC08} = {F9123B95-3FAD-4E88-B545-60647EB503D5}
 	EndGlobalSection

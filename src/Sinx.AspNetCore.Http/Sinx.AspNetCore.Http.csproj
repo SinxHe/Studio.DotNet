@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyName>Sinx.AspNetCore.Http</AssemblyName>
+    <PackageId>Sinx.AspNetCore.Http</PackageId>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sinx.AspNetCore.Http.Abstractions\Sinx.AspNetCore.Http.Abstractions.csproj" />
+    <ProjectReference Include="..\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NETStandard.Library" Version="1.6.0" />
+    <PackageReference Include="Sinx.Net.Http.Headers" Version="1.0.0-*" />
+  </ItemGroup>
+
+</Project>
