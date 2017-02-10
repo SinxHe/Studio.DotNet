@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26127.3
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.Net.Http.Headers", "Sinx.Net.Http.Headers\Sinx.Net.Http.Headers.csproj", "{4C6C35AF-1821-462F-A215-9B1E88BFEC08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.AspNetCore.Http.Abstractions.Tests", "Sinx.AspNetCore.Http.Abstractions.Tests\Sinx.AspNetCore.Http.Abstractions.Tests.csproj", "{6E950066-E117-4AF4-B73F-B2E26B379D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.AspNetCore.WebUtilities", "Sinx.AspNetCore.WebUtilities\Sinx.AspNetCore.WebUtilities.csproj", "{30667774-17B8-40D6-9002-D89BFDE33F4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +133,18 @@ Global
 		{6E950066-E117-4AF4-B73F-B2E26B379D8B}.Release|x64.Build.0 = Release|x64
 		{6E950066-E117-4AF4-B73F-B2E26B379D8B}.Release|x86.ActiveCfg = Release|x86
 		{6E950066-E117-4AF4-B73F-B2E26B379D8B}.Release|x86.Build.0 = Release|x86
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Debug|x64.ActiveCfg = Debug|x64
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Debug|x64.Build.0 = Debug|x64
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Debug|x86.ActiveCfg = Debug|x86
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Debug|x86.Build.0 = Debug|x86
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Release|x64.ActiveCfg = Release|x64
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Release|x64.Build.0 = Release|x64
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Release|x86.ActiveCfg = Release|x86
+		{30667774-17B8-40D6-9002-D89BFDE33F4F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,5 +160,6 @@ Global
 		{344A0892-8B86-4862-826E-C1FAD900A539} = {4EF5EA30-183A-4609-8BC8-B72B207E936D}
 		{4C6C35AF-1821-462F-A215-9B1E88BFEC08} = {F9123B95-3FAD-4E88-B545-60647EB503D5}
 		{6E950066-E117-4AF4-B73F-B2E26B379D8B} = {F9123B95-3FAD-4E88-B545-60647EB503D5}
+		{30667774-17B8-40D6-9002-D89BFDE33F4F} = {F9123B95-3FAD-4E88-B545-60647EB503D5}
 	EndGlobalSection
 EndGlobal

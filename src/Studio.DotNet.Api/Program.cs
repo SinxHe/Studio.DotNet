@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -42,16 +43,16 @@ namespace Studio.DotNet.Api
 			listener.Start();
 			listener.Prefixes.ToList().ForEach(prefiex => Console.WriteLine($"Start Listene At {prefiex} ..."));
 
-			while (true)
-			{
-				var context = listener.GetContext();
-				var pipeline = new Pipeline<SinxHttpContext>();
-				RouteMiddleware.Add(pipeline); 
-				var sinxHttpContext = new SinxHttpContext(context);
-				pipeline.ProcessAsync(sinxHttpContext);
-				(sinxHttpContext.Response as SinxHttpResponse)?.ToHttpListenerResponse(context.Response);
-				context.Response.Close();
-			}
+			//while (true)
+			//{
+			//	var context = listener.GetContext();
+			//	var pipeline = new Pipeline<SinxHttpContext>();
+			//	RouteMiddleware.Add(pipeline); 
+			//	var sinxHttpContext = new SinxHttpContext(context);
+			//	pipeline.ProcessAsync(sinxHttpContext);
+			//	(sinxHttpContext.Response)?.ToHttpListenerResponse(context.Response);
+			//	context.Response.Close();
+			//}
 
 			//var request = context.Request;
 			// Obtain a response object.
@@ -75,7 +76,6 @@ namespace Studio.DotNet.Api
 		{
 			Features = new FeatureCollection();
 			Request = new SinxHttpRequest(lc.Request);
-			Response = new SinxHttpResponse(lc.Response);
 		}
 
 		public override IFeatureCollection Features { get; }
@@ -93,25 +93,22 @@ namespace Studio.DotNet.Api
 		public override HttpContext HttpContext { get; }
 		public override string Method { get; set; }
 		public override PathString Path { get; set; }
-	}
-
-	public class SinxHttpResponse : HttpResponse
-	{
-		public SinxHttpResponse(HttpListenerResponse lr)
+		public override string Scheme { get; set; }
+		public override bool IsHttps { get; set; }
+		public override HostString Host { get; set; }
+		public override PathString PathBase { get; set; }
+		public override QueryString QueryString { get; set; }
+		public override IQueryCollection Query { get; set; }
+		public override string Protocol { get; set; }
+		public override IHeaderDictionary Headers { get; }
+		public override long? ContentLength { get; set; }
+		public override string ContentType { get; set; }
+		public override Stream Body { get; set; }
+		public override bool HasFormContentType { get; }
+		public override IFormCollection Form { get; set; }
+		public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = new CancellationToken())
 		{
-			StatusCode = lr.StatusCode;
+			throw new NotImplementedException();
 		}
-
-		public HttpListenerResponse ToHttpListenerResponse(HttpListenerResponse lr)
-		{
-			lr.StatusCode = this.StatusCode;
-			return lr;
-		}
-
-		public override HttpContext HttpContext { get; }
-
-		public override int StatusCode
-		{
-			get; set; }
 	}
 }

@@ -23,7 +23,8 @@ namespace Sinx.AspNetCore.Http.Features
 		/// <summary>
 		/// Incremented for each modification and can be used to verify cached results.
 		/// </summary>
-		//int Revision { get; }
+		/// <remarks>FeatureReference会缓存特性集合, 发现Revision变了的时候会清空缓存</remarks>
+		int Revision { get; }
 
 		/// <summary>
 		/// Gets or sets a given feature. Setting a null value removes the feature.

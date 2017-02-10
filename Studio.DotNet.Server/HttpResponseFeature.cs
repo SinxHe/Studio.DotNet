@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Sinx.AspNetCore.Http;
 using Sinx.AspNetCore.Http.Features;
 
 namespace Studio.DotNet.Server
 {
-    public class HttpResponseFeature : IHttpResponseFeature
+	internal class HttpResponseFeature : IHttpResponseFeature
     {
 	    public int StatusCode { get; set; }
 	    public string ReasonPhrase { get; set; }
@@ -19,10 +17,13 @@ namespace Studio.DotNet.Server
 	    {
 		    throw new NotImplementedException();
 	    }
-
 	    public void OnCompleted(Func<object, Task> callback, object state)
 	    {
 		    throw new NotImplementedException();
 	    }
+		public HttpResponseFeature()
+		{
+			HasStarted = false;
+		}
     }
 }

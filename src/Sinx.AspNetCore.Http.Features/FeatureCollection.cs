@@ -24,12 +24,9 @@ namespace Sinx.AspNetCore.Http.Features
 			_defaults = defaults;
 		}
 
-		//public virtual int Revision
-		//{
-		//	get { return _containerRevision + (_defaults?.Revision ?? 0); }
-		//}
+		public virtual int Revision => _containerRevision + (_defaults?.Revision ?? 0);
 
-		//public bool IsReadOnly { get { return false; } }
+		public bool IsReadOnly => false;
 
 		public object this[Type key]
 		{
@@ -107,6 +104,7 @@ namespace Sinx.AspNetCore.Http.Features
 		{
 			public bool Equals(KeyValuePair<Type, object> x, KeyValuePair<Type, object> y)
 			{
+				// ReSharper disable once CheckForReferenceEqualityInstead.1
 				return x.Key.Equals(y.Key);
 			}
 

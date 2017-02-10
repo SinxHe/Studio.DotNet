@@ -10,6 +10,12 @@ using Sinx.AspNetCore.Http.Features;
 
 namespace Studio.DotNet.Server
 {
+	/// <summary>
+	/// 自定义服务器的Http请求特性
+	/// </summary>
+	/// <remarks>
+	/// 服务器的请求只有转换成Asp.Net Core能够识别的IHttpResponseFeature, Asp.Net Core才能将请求转换成自己内部的HTTP请求
+	/// </remarks>
 	internal class RequestFeature : IHttpRequestFeature
 	{
 		public Stream Body { get; set; }
