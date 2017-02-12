@@ -104,7 +104,7 @@ namespace Sinx.AspNetCore.WebUtilities
         }
 
         /// <summary>
-        /// Parse a query string into its component key and value parts.
+        /// Parse a query string into its component(组成部分的) key and value parts.
         /// </summary>
         /// <param name="queryString">The raw query string value, with or without the leading '?'.</param>
         /// <returns>A collection of parsed keys and values.</returns>
@@ -112,12 +112,7 @@ namespace Sinx.AspNetCore.WebUtilities
         {
             var result = ParseNullableQuery(queryString);
 
-            if (result == null)
-            {
-                return new Dictionary<string, StringValues>();
-            }
-
-            return result;
+            return result ?? new Dictionary<string, StringValues>();
         }
 
 
@@ -181,12 +176,7 @@ namespace Sinx.AspNetCore.WebUtilities
                 scanIndex = delimiterIndex + 1;
             }
 
-            if (!accumulator.HasValues)
-            {
-                return null;
-            }
-
-            return accumulator.GetResults();
+            return !accumulator.HasValues ? null : accumulator.GetResults();
         }
     }
 }

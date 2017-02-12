@@ -5,7 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
-
+// ReSharper disable MemberCanBePrivate.Global
 namespace Sinx.AspNetCore.Http.Internal
 {
     /// <summary>
@@ -105,11 +105,7 @@ namespace Sinx.AspNetCore.Http.Internal
         /// <returns>true if the <see cref="HeaderDictionary" /> contains a specific key; otherwise, false.</returns>
         public bool ContainsKey(string key)
         {
-            if (Store == null)
-            {
-                return false;
-            }
-            return Store.ContainsKey(key);
+	        return Store != null && Store.ContainsKey(key);
         }
 
         /// <summary>
@@ -174,6 +170,7 @@ namespace Sinx.AspNetCore.Http.Internal
         {
             // Do NOT make this readonly, or MoveNext will not work
             private Dictionary<string, StringValues>.Enumerator _dictionaryEnumerator;
+	        // ReSharper disable once FieldCanBeMadeReadOnly.Local
             private bool _notEmpty;
 
             internal Enumerator(Dictionary<string, StringValues>.Enumerator dictionaryEnumerator)

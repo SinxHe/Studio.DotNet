@@ -19,7 +19,7 @@ namespace Sinx.AspNetCore.Http.Internal
 		public override HttpContext HttpContext => _context;
 
 		private IHttpRequestFeature HttpRequestFeature
-			=> _features.Fetch(ref _features.Cache.Request, null);
+			=> _features.Fetch(ref _features.Cache.Request, null);	// TODO study Fetch logic
 
 		public override string Method
 		{
@@ -73,10 +73,18 @@ namespace Sinx.AspNetCore.Http.Internal
 			get { return Headers.ContentLength; }
 			set { Headers.ContentLength = value; }
 		}
-		public override string ContentType { get; set; }
-		public override Stream Body { get; set; }
-		public override bool HasFormContentType { get; }
-		public override IFormCollection Form { get; set; }
+		public override string ContentType {
+			get { return Headers[HeaderNames.ContentType]; }
+			set { Headers[HeaderNames.ContentType] = value; }
+		}
+
+		public override Stream Body
+		{
+			get { return HttpRequestFeature.Body; }
+			set { HttpRequestFeature.Body = value; }
+		}
+		public override bool HasFormContentType { get; }	// TODO
+		public override IFormCollection Form { get; set; }	// TODO
 		public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = new CancellationToken())
 		{
 			throw new NotImplementedException();
@@ -105,7 +113,7 @@ namespace Sinx.AspNetCore.Http.Internal
 		{
 			public IHttpRequestFeature Request;
 			public IQueryFeature Query;	// IHttpRequestFeature 中只有 QueryString 没有 QueryCollection, 但是 HttpRequest 中有啊
-			public IFormFeature Form;
+			//public IFormFeature Form;	// TODO
 			//public IRequestCookiesFeature Cookies;	TODO cookie to imp
 		}
 	}
