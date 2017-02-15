@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Sinx.AspNetCore.Http;
 using Sinx.AspNetCore.Http.Features;
+using Studio.DotNet.Server;
 
 namespace Studio.DotNet.Api
 {
@@ -43,16 +44,21 @@ namespace Studio.DotNet.Api
 			listener.Start();
 			listener.Prefixes.ToList().ForEach(prefiex => Console.WriteLine($"Start Listene At {prefiex} ..."));
 
-			//while (true)
-			//{
-			//	var context = listener.GetContext();
-			//	var pipeline = new Pipeline<SinxHttpContext>();
-			//	RouteMiddleware.Add(pipeline); 
-			//	var sinxHttpContext = new SinxHttpContext(context);
-			//	pipeline.ProcessAsync(sinxHttpContext);
-			//	(sinxHttpContext.Response)?.ToHttpListenerResponse(context.Response);
-			//	context.Response.Close();
-			//}
+			while (true)
+			{
+				var context = listener.GetContext();
+				var pipeline = new Pipeline<HttpContext>();
+				pipeline.Add(next => ctx =>
+				{
+					ctx.Response.StatusCode = 201;
+					return next(ctx);
+				});
+				var sinxHttpContext = new SinxHttpContext(context);
+				var httpContext = new HttpContextFactory().Create();
+				pipeline.ProcessAsync();
+				//(sinxHttpContext.Response)?.ToHttpListenerResponse(context.Response);
+				context.Response.Close();
+			}
 
 			//var request = context.Request;
 			// Obtain a response object.
@@ -67,48 +73,6 @@ namespace Studio.DotNet.Api
 			// You must close the output stream.
 			//output.Close();
 			listener.Stop();
-		}
-	}
-
-	public class SinxHttpContext : HttpContext
-	{
-		public SinxHttpContext(HttpListenerContext lc)
-		{
-			Features = new FeatureCollection();
-			Request = new SinxHttpRequest(lc.Request);
-		}
-
-		public override IFeatureCollection Features { get; }
-		public override HttpRequest Request { get; }
-		public override HttpResponse Response { get; }
-	}
-
-	public class SinxHttpRequest : HttpRequest
-	{
-		public SinxHttpRequest(HttpListenerRequest lr)
-		{
-			this.Method = lr.HttpMethod;
-			this.Path = new PathString(lr.Url.AbsolutePath);
-		}
-		public override HttpContext HttpContext { get; }
-		public override string Method { get; set; }
-		public override PathString Path { get; set; }
-		public override string Scheme { get; set; }
-		public override bool IsHttps { get; set; }
-		public override HostString Host { get; set; }
-		public override PathString PathBase { get; set; }
-		public override QueryString QueryString { get; set; }
-		public override IQueryCollection Query { get; set; }
-		public override string Protocol { get; set; }
-		public override IHeaderDictionary Headers { get; }
-		public override long? ContentLength { get; set; }
-		public override string ContentType { get; set; }
-		public override Stream Body { get; set; }
-		public override bool HasFormContentType { get; }
-		public override IFormCollection Form { get; set; }
-		public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = new CancellationToken())
-		{
-			throw new NotImplementedException();
 		}
 	}
 }

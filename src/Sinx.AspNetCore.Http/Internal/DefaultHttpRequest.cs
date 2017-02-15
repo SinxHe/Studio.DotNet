@@ -19,7 +19,7 @@ namespace Sinx.AspNetCore.Http.Internal
 		public override HttpContext HttpContext => _context;
 
 		private IHttpRequestFeature HttpRequestFeature
-			=> _features.Fetch(ref _features.Cache.Request, null);	// TODO study Fetch logic
+			=> _features.Fetch(ref _features.Cache.Request, null);  // TODO study Fetch logic
 
 		public override string Method
 		{
@@ -55,25 +55,31 @@ namespace Sinx.AspNetCore.Http.Internal
 			set { HttpRequestFeature.Path = value.Value; }
 		}
 
-		public override QueryString QueryString {
+		public override QueryString QueryString
+		{
 			get { return new QueryString(HttpRequestFeature.QueryString); }
 			set { HttpRequestFeature.QueryString = value.Value; }
 		}
 
 		private IQueryFeature QueryFeature => _features.Fetch(ref _features.Cache.Query, f => new QueryFeature(f));
-		public override IQueryCollection Query {
+		public override IQueryCollection Query
+		{
 			get { return QueryFeature.Query; }
 			set { QueryFeature.Query = value; }
 		}
-		public override string Protocol {
+		public override string Protocol
+		{
 			get { return HttpRequestFeature.Protocol; }
-			set{ HttpRequestFeature.Protocol = value; } }
-		
-		public override long? ContentLength {
+			set { HttpRequestFeature.Protocol = value; }
+		}
+
+		public override long? ContentLength
+		{
 			get { return Headers.ContentLength; }
 			set { Headers.ContentLength = value; }
 		}
-		public override string ContentType {
+		public override string ContentType
+		{
 			get { return Headers[HeaderNames.ContentType]; }
 			set { Headers[HeaderNames.ContentType] = value; }
 		}
@@ -83,11 +89,17 @@ namespace Sinx.AspNetCore.Http.Internal
 			get { return HttpRequestFeature.Body; }
 			set { HttpRequestFeature.Body = value; }
 		}
-		public override bool HasFormContentType { get; }	// TODO
-		public override IFormCollection Form { get; set; }	// TODO
+
+		private IFormFeature FormFeature => _features.Fetch(ref _features.Cache.Form, null);
+		public override bool HasFormContentType => FormFeature.HasFormContentType;
+		public override IFormCollection Form
+		{
+			get { return FormFeature.ReadForm(); }
+			set { FormFeature.Form = value; }
+		}
 		public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = new CancellationToken())
 		{
-			throw new NotImplementedException();
+			return FormFeature.ReadFormAsync(cancellationToken);
 		}
 		public DefaultHttpRequest(HttpContext context)
 		{
@@ -112,8 +124,8 @@ namespace Sinx.AspNetCore.Http.Internal
 		private struct FeatureInterfaces
 		{
 			public IHttpRequestFeature Request;
-			public IQueryFeature Query;	// IHttpRequestFeature 中只有 QueryString 没有 QueryCollection, 但是 HttpRequest 中有啊
-			//public IFormFeature Form;	// TODO
+			public IQueryFeature Query; // IHttpRequestFeature 中只有 QueryString 没有 QueryCollection, 但是 HttpRequest 中有啊
+			public IFormFeature Form;
 			//public IRequestCookiesFeature Cookies;	TODO cookie to imp
 		}
 	}

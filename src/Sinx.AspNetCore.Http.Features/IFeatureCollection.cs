@@ -18,7 +18,7 @@ namespace Sinx.AspNetCore.Http.Features
 	public interface IFeatureCollection : IEnumerable<KeyValuePair<Type, object>>, IEnumerable
 	{
 		/// <summary>Indicates if the collection can be modified.</summary>
-		//bool IsReadOnly { get; }
+		bool IsReadOnly { get; }
 
 		/// <summary>
 		/// Incremented for each modification and can be used to verify cached results.

@@ -34,22 +34,22 @@ namespace Sinx.AspNetCore.Http
 		/// <summary>
 		/// Gets the response headers.
 		/// </summary>
-		//public abstract IHeaderDictionary Headers { get; }
+		public abstract IHeaderDictionary Headers { get; }
 
 		/// <summary>
 		/// Gets the response body <see cref="Stream"/>.
 		/// </summary>
-		//public abstract Stream Body { get; set; }
+		public abstract Stream Body { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value for the <c>Content-Length</c> response header.
 		/// </summary>
-		//public abstract long? ContentLength { get; set; }
+		public abstract long? ContentLength { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value for the <c>Content-Type</c> response header.
 		/// </summary>
-		//public abstract string ContentType { get; set; }
+		public abstract string ContentType { get; set; }
 
 		/// <summary>
 		/// Gets an object that can be used to manage cookies for this response.
@@ -59,7 +59,7 @@ namespace Sinx.AspNetCore.Http
 		/// <summary>
 		/// Gets a value indicating whether response headers have been sent to the client.
 		/// </summary>
-		//public abstract bool HasStarted { get; }
+		public abstract bool HasStarted { get; }
 
 		/// <summary>
 		/// Adds a delegate to be invoked just before response headers will be sent to the client.
@@ -97,13 +97,13 @@ namespace Sinx.AspNetCore.Http
 		/// Returns a temporary redirect response (HTTP 302) to the client.
 		/// </summary>
 		/// <param name="location">The URL to redirect the client to.</param>
-		//public virtual void Redirect(string location) => Redirect(location, permanent: false);
+		public virtual void Redirect(string location) => Redirect(location, permanent: false);
 
 		/// <summary>
 		/// Returns a redirect response (HTTP 301 or HTTP 302) to the client.
 		/// </summary>
 		/// <param name="location">The URL to redirect the client to.</param>
 		/// <param name="permanent"><c>True</c> if the redirect is permanent (301), otherwise <c>false</c> (302).</param>
-		//public abstract void Redirect(string location, bool permanent);
+		public abstract void Redirect(string location, bool permanent);
 	}
 }

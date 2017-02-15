@@ -6,7 +6,7 @@ using Sinx.AspNetCore.Http.Features;
 
 namespace Studio.DotNet.Server
 {
-	internal class HttpResponseFeature : IHttpResponseFeature
+	internal class SinxHttpResponse : IHttpResponseFeature
     {
 	    public int StatusCode { get; set; }
 	    public string ReasonPhrase { get; set; }
@@ -21,7 +21,7 @@ namespace Studio.DotNet.Server
 	    {
 		    throw new NotImplementedException();
 	    }
-		public HttpResponseFeature()
+		public SinxHttpResponse()
 		{
 			HasStarted = false;
 		}

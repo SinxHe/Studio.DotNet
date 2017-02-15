@@ -81,6 +81,6 @@ namespace Sinx.AspNetCore.Http
 		//public abstract ISession Session { get; set; }
 
 		/// <summary>Aborts the connection underlying this request.</summary>
-		//public abstract void Abort();
+		public abstract void Abort();
 	}
 }

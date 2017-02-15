@@ -16,7 +16,7 @@ namespace Studio.DotNet.Server
 	/// <remarks>
 	/// 服务器的请求只有转换成Asp.Net Core能够识别的IHttpResponseFeature, Asp.Net Core才能将请求转换成自己内部的HTTP请求
 	/// </remarks>
-	internal class RequestFeature : IHttpRequestFeature
+	internal class SinxHttpRequest : IHttpRequestFeature
 	{
 		public Stream Body { get; set; }
 
@@ -36,10 +36,10 @@ namespace Studio.DotNet.Server
 
 		public string RawTarget { get; set; }
 
-		public RequestFeature()
+		public SinxHttpRequest()
 		{
 			this.Body = Stream.Null;
-			this.Headers = (IHeaderDictionary)new HeaderDictionary();
+			this.Headers = new HeaderDictionary();
 			this.Method = "GET";
 			this.Path = "";
 			this.PathBase = "";

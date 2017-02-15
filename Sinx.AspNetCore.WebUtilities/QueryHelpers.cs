@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Encodings.Web;
 using Microsoft.Extensions.Primitives;
-using Microsoft.AspNetCore.WebUtilities;
 
 namespace Sinx.AspNetCore.WebUtilities
 {

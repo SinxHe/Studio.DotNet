@@ -1,12 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <AssemblyName>Sinx.AspNetCore.Http</AssemblyName>
-    <PackageId>Sinx.AspNetCore.Http</PackageId>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Description>ASP.NET Core default HTTP feature implementations.</Description>
+    <TargetFrameworks>netstandard1.3</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageTags>aspnetcore</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Sinx.AspNetCore.WebUtilities\Sinx.AspNetCore.WebUtilities.csproj" />
@@ -15,6 +14,8 @@
     <ProjectReference Include="..\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NETStandard.Library" Version="1.6.0" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="1.1.0" />
+    <PackageReference Include="NETStandard.Library" Version="1.6.1" />
   </ItemGroup>
 </Project>

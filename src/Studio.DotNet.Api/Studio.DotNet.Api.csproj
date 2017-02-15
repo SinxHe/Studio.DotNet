@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Studio.DotNet.Server\Studio.DotNet.Server.csproj" />
     <ProjectReference Include="..\Sinx.AspNetCore.Http.Abstractions\Sinx.AspNetCore.Http.Abstractions.csproj" />
   </ItemGroup>
 

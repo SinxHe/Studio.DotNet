@@ -11,7 +11,7 @@
     <ProjectReference Include="..\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NETStandard.Library" Version="1.6.0" />
+    <PackageReference Include="NETStandard.Library" Version="1.6.1" />
     <PackageReference Include="System.Globalization.Extensions" Version="4.3.0" />
     <PackageReference Include="System.Text.Encodings.Web" Version="4.3.0" />
   </ItemGroup>
