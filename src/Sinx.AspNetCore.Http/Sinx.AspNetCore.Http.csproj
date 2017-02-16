@@ -4,8 +4,7 @@
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageTags>aspnetcore</PackageTags>
+    <Company>Sinx.AspNetCore.Http.Cop</Company>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Sinx.AspNetCore.WebUtilities\Sinx.AspNetCore.WebUtilities.csproj" />
@@ -16,6 +15,5 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="1.1.0" />
-    <PackageReference Include="NETStandard.Library" Version="1.6.1" />
   </ItemGroup>
 </Project>

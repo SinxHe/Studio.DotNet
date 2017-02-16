@@ -23,6 +23,10 @@ namespace Studio.DotNet.Server
 	    }
 		public SinxHttpResponse()
 		{
+			StatusCode = 200;
+			ReasonPhrase = "Ok";
+			Headers = new HeaderDictionary();
+			Body = Stream.Null;
 			HasStarted = false;
 		}
     }

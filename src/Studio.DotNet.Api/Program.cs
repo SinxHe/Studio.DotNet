@@ -52,26 +52,22 @@ namespace Studio.DotNet.Api
 				{
 					ctx.Response.StatusCode = 201;
 					return next(ctx);
+				}).Add(next => ctx =>
+				{
+					var strings = "<body><h1>HelloWorld</h1></body>".ToCharArray();
+					var buffer = Encoding.UTF8.GetBytes(strings, 0, strings.Length);
+					ctx.Response.Body = new MemoryStream(buffer);
+					return next(ctx);
 				});
 				var sinxHttpContext = new SinxHttpContext(context);
-				var httpContext = new HttpContextFactory().Create();
-				pipeline.ProcessAsync();
-				//(sinxHttpContext.Response)?.ToHttpListenerResponse(context.Response);
+				var featureCollection = new FeatureCollection();
+				featureCollection.Set(sinxHttpContext.HttpRequest);
+				featureCollection.Set(sinxHttpContext.HttpResponse);
+				var httpContext = new HttpContextFactory().Create(featureCollection);
+				pipeline.ProcessAsync(httpContext);
+				context = sinxHttpContext.ToHttpListenerContext();
 				context.Response.Close();
 			}
-
-			//var request = context.Request;
-			// Obtain a response object.
-			//var response = context.Response;
-			// Construct a response.
-			//var responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
-			//var buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
-			// Get a response stream and write the response to it.
-			//response.ContentLength64 = buffer.Length;
-			//var output = response.OutputStream;
-			//output.Write(buffer, 0, buffer.Length);
-			// You must close the output stream.
-			//output.Close();
 			listener.Stop();
 		}
 	}
