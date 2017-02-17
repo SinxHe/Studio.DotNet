@@ -26,41 +26,33 @@ namespace Sinx.AspNetCore.Builder.Internal
 			Properties = new Dictionary<string, object>();
 			ApplicationServices = serviceProvider;
 		}
-
 		public ApplicationBuilder(IServiceProvider serviceProvider, object server)
 			: this(serviceProvider)
 		{
 			SetProperty(Constants.BuilderProperties.ServerFeatures, server);
 		}
-
 		private ApplicationBuilder(IApplicationBuilder builder)
 		{
 			Properties = builder.Properties;
 		}
-
 		public IFeatureCollection ServerFeatures => GetProperty<IFeatureCollection>(Constants.BuilderProperties.ServerFeatures);
-
 		private T GetProperty<T>(string key)
 		{
 			return Properties.TryGetValue(key, out object value) ? (T)value : default(T);
 		}
-
 		private void SetProperty<T>(string key, T value)
 		{
 			Properties[key] = value;
 		}
-
 		public IApplicationBuilder Use(Func<RequestDelegate, RequestDelegate> middleware)
 		{
 			_components.Add(middleware);
 			return this;
 		}
-
 		public IApplicationBuilder New()
 		{
 			return new ApplicationBuilder(this);
 		}
-
 		public RequestDelegate Build()
 		{
 			RequestDelegate app = context =>

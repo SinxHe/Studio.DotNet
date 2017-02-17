@@ -4,6 +4,7 @@ using Sinx.Net.Http.Headers;
 
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable VirtualMemberCallInConstructor
+// ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
 namespace Sinx.AspNetCore.Http.Internal
 {
 	public class DefaultHttpResponse : HttpResponse
@@ -59,7 +60,6 @@ namespace Sinx.AspNetCore.Http.Internal
 				}
 			}
 		}
-
 		public override bool HasStarted => HttpResponseFeature.HasStarted;
 		public override void Redirect(string location, bool permanent)
 		{

@@ -57,12 +57,12 @@ namespace Sinx.AspNetCore.Http
 		/// <summary>
 		/// Gets or sets a key/value collection that can be used to share data within the scope of this request.
 		/// </summary>
-		//public abstract IDictionary<object, object> Items { get; set; }
+		public abstract IDictionary<object, object> Items { get; set; }
 
 		/// <summary>
 		/// Gets or sets the <see cref="T:System.IServiceProvider" /> that provides access to the request's service container.
 		/// </summary>
-		//public abstract IServiceProvider RequestServices { get; set; }
+		public abstract IServiceProvider RequestServices { get; set; }
 
 		/// <summary>
 		/// Notifies when the connection underlying this request is aborted and thus request operations should be

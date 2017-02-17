@@ -13,7 +13,7 @@ namespace Studio.DotNet.Server
 	{
 		public IHttpRequestFeature HttpRequest { get; set; }
 		public IHttpResponseFeature HttpResponse { get; set; }
-		private HttpListenerContext _httpListenerContext;
+		private readonly HttpListenerContext _httpListenerContext;
 		public SinxHttpContext(HttpListenerContext context)
 		{
 			_httpListenerContext = context;
