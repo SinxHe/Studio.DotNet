@@ -37,7 +37,7 @@ namespace Studio.DotNet.Api
 			// Create a listener.
 			var listener = new HttpListener();
 			// Add the prefixes.
-			foreach (var s in prefixes)
+			foreach (string s in prefixes)
 			{
 				listener.Prefixes.Add(s);
 			}

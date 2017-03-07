@@ -10,8 +10,8 @@ namespace Sinx.AspNetCore.Http.Internal
 
         internal static class BuilderProperties
         {
-            internal static string ServerFeatures = "server.Features";
-            internal static string ApplicationServices = "application.Services";
+	        internal const string ServerFeatures = "server.Features";
+	        internal const string ApplicationServices = "application.Services";
         }
     }
 }

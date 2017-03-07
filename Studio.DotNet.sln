@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinx.AspNetCore.Hosting.Abs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AspNetCore.Hosting.Server.Abstractions", "Sinx.AspNetCore.Hosting.Server.Abstractions\Sinx.AspNetCore.Hosting.Server.Abstractions.csproj", "{620DA793-757B-49A6-8580-C738F3BFE2F3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sinx.AspNetCore.Hosting", "Sinx.AspNetCore.Hosting\Sinx.AspNetCore.Hosting.csproj", "{2581FF45-A9A9-40D2-B738-AEDF344D28E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +191,18 @@ Global
 		{620DA793-757B-49A6-8580-C738F3BFE2F3}.Release|x64.Build.0 = Release|x64
 		{620DA793-757B-49A6-8580-C738F3BFE2F3}.Release|x86.ActiveCfg = Release|x86
 		{620DA793-757B-49A6-8580-C738F3BFE2F3}.Release|x86.Build.0 = Release|x86
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Debug|x64.ActiveCfg = Debug|x64
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Debug|x64.Build.0 = Debug|x64
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Debug|x86.ActiveCfg = Debug|x86
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Debug|x86.Build.0 = Debug|x86
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Release|x64.ActiveCfg = Release|x64
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Release|x64.Build.0 = Release|x64
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Release|x86.ActiveCfg = Release|x86
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -209,5 +223,6 @@ Global
 		{A096DEFC-85EA-4CD7-9721-49D05D19000E} = {E6AAEEB3-D3D1-4F83-8682-3FB0764859DF}
 		{6DF90201-831A-4027-9218-A73E9FFD3C56} = {A096DEFC-85EA-4CD7-9721-49D05D19000E}
 		{620DA793-757B-49A6-8580-C738F3BFE2F3} = {A096DEFC-85EA-4CD7-9721-49D05D19000E}
+		{2581FF45-A9A9-40D2-B738-AEDF344D28E9} = {A096DEFC-85EA-4CD7-9721-49D05D19000E}
 	EndGlobalSection
 EndGlobal

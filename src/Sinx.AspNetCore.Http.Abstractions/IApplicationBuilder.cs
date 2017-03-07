@@ -41,6 +41,9 @@ namespace Sinx.AspNetCore.Builder
 		/// <see cref="IApplicationBuilder"/>.
 		/// </summary>
 		/// <returns>The new <see cref="IApplicationBuilder"/>.</returns>
+		/// <remarks>
+		/// TODO: 这个方法存在的意义? 不能直接用构造函数进行创建吗?
+		/// </remarks>
 		IApplicationBuilder New();
 
 		/// <summary>

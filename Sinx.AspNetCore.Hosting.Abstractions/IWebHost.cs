@@ -6,6 +6,9 @@ namespace Sinx.AspNetCore.Hosting.Abstractions
 	/// <summary>
 	/// Represents a configured web host.
 	/// </summary>
+	/// <remarks>
+	/// 
+	/// </remarks>
 	public interface IWebHost : IDisposable
 	{
 		/// <summary>

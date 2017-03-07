@@ -23,15 +23,22 @@ namespace Studio.DotNet.Api
 			    var match = Regex.Match(ctx.Request.Path.Value, @"/(?<ctl>\w+?)/(?<act>.+?)$", RegexOptions.IgnoreCase);
 				if (match.Success)
 				{
+					string ctlName = match.Result("${ctl}");
+					string actName = match.Result("${act}");
 					var routeData = new RouteData
 					{
-						Controller = match.Result("${ctl}"),
-						Action = match.Result("${act}")
+						Controller = ctlName,
+						Action = actName
 					};
 					ctx.Features[typeof(RouteData)] = routeData;
 					var asses = typeof(HomeController).Assembly;
-					var controller =
-						Activator.CreateInstance(asses.ExportedTypes.FirstOrDefault(type => type.Name.ToLower() == "homecontroller"));
+					var ctlType = asses.ExportedTypes.FirstOrDefault(type => type.Name.ToLower() == ctlName + "controller");
+					object controller = null;
+					if (ctlType != null)
+					{
+						controller = Activator.CreateInstance(ctlType);
+					}
+					
 					var action =
 						controller?.GetType()
 							.GetTypeInfo()
@@ -41,13 +48,10 @@ namespace Studio.DotNet.Api
 					action?.Invoke(controller,null);
 					return nextMid(ctx);
 				}
-				else
-				{
-					ctx.Response.StatusCode = 404;
-					//ctx.Response.OutputStream.Close();
-					//ctx.Response.Close();
-					return Task.FromResult(ctx);
-				}
+			    ctx.Response.StatusCode = 404;
+			    //ctx.Response.OutputStream.Close();
+			    //ctx.Response.Close();
+			    return Task.FromResult(ctx);
 		    });
 	    }
     }

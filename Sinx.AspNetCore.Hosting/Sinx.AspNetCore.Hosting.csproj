@@ -1,7 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sinx.AspNetCore.Hosting.Abstractions\Sinx.AspNetCore.Hosting.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj" />
+  </ItemGroup>
 
 </Project>

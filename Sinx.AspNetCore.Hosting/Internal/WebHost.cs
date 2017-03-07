@@ -10,6 +10,7 @@ namespace Sinx.AspNetCore.Hosting.Internal
 	    public IServiceProvider Services { get; }
 	    public void Start()
 	    {
+			// 创建应用程序
 		    throw new NotImplementedException();
 	    }
 		public void Dispose()

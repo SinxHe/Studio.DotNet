@@ -8,6 +8,11 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="1.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sinx.AspNetCore.Hosting.Server.Abstractions\Sinx.AspNetCore.Hosting.Server.Abstractions.csproj" />
+    <ProjectReference Include="..\Sinx.AspNetCore.Hosting\Sinx.AspNetCore.Hosting.csproj" />
     <ProjectReference Include="..\src\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj" />
     <ProjectReference Include="..\src\Sinx.AspNetCore.Http\Sinx.AspNetCore.Http.csproj" />
   </ItemGroup>
