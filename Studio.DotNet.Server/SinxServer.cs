@@ -7,6 +7,7 @@ using Sinx.AspNetCore.Http.Features;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using Sinx.AspNetCore.Hosting.Server.Abstractions;
+using Sinx.AspNetCore.Http;
 
 #pragma warning disable 1570
 
@@ -65,6 +66,11 @@ namespace Studio.DotNet.Server
 			while (true)
 			{
 				var listenerContext = listener.GetContext();
+				var sinxHttpContext = new SinxHttpContext(listenerContext);
+				Features.Set(sinxHttpContext.HttpRequest);	// 替换赋值
+				Features.Set(sinxHttpContext.HttpResponse);
+				var httpContext = application.CreateContext(Features);
+				application.ProcessRequestAsync(httpContext);
 			}
 		}
 		public void Dispose()

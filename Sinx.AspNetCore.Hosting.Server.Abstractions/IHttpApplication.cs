@@ -21,7 +21,7 @@ namespace Sinx.AspNetCore.Hosting.Server.Abstractions
 		/// </summary>
 		/// <param name="context">The TContext that the operation will process.</param>
 		/// <returns></returns>
-		Task ProcessReqeustAsync(TContext context);
+		Task ProcessRequestAsync(TContext context);
 
 		/// <summary>
 		/// Dispose a given TContext.
