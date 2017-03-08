@@ -10,6 +10,11 @@ namespace Sinx.AspNetCore.Http.Features
 	/// <summary>
 	/// Represents the fields and state of an HTTP response.
 	/// </summary>
+	/// <remarks>
+	/// 1. 由 Server 的 HttpResponse 实现;
+	/// 2. DefaultHttpResponse 使用的如:StatusCode字段其实跟IHttpResponseFeature指向的同一个托管堆地址, 所以改变DeafultHttpResponse的StatusCode, IHttpResponseFeature也会改变
+	///			1. 基于以上原因, 也能发现, 比如: QueryString, 返回的是一个新的 QueryString, 所以里面没有Add方法, 因为在因为新的QeuryString赋值影响不了原来的
+	/// </remarks>
 	public interface IHttpResponseFeature
 	{
 		/// <summary>

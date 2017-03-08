@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Sinx.AspNetCore.Hosting;
-using Sinx.AspNetCore.Hosting.Server.Abstractions;
 using Sinx.AspNetCore.Http.Features;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
+using Sinx.AspNetCore.Hosting.Server.Abstractions;
+
 #pragma warning disable 1570
 
 namespace Studio.DotNet.Server
@@ -18,6 +17,7 @@ namespace Studio.DotNet.Server
 	/// </summary>
 	/// <remarks>
 	/// In: IHttpApplication<TContext>, [对Server的Addresses等配置]
+	/// 这里没有把HttpWebListener暴露出去, 因为传入IHttpApplication后所有的逻辑都内部进行处理了
 	/// </remarks>
 	public class SinxServer : IServer
     {
@@ -44,6 +44,11 @@ namespace Studio.DotNet.Server
 		public IFeatureCollection Features { get; } = new FeatureCollection();
 		public void Start<TContext>(IHttpApplication<TContext> application)
 		{
+			if (!HttpListener.IsSupported)
+			{
+				_logger.LogError("Windows XP SP2 or Server 2003 is required to use the HttpListener class.");
+				return;
+			}
 			if (!_serverAddressesFeature.Addresses.Any())
 			{
 				_serverAddressesFeature.Addresses.Add("http://localhost:50000/");
@@ -57,6 +62,10 @@ namespace Studio.DotNet.Server
 			}
 			listener.Start();
 			listener.Prefixes.ToList().ForEach(prefiex => _logger.LogInformation($"Start Listene At {prefiex} ..."));
+			while (true)
+			{
+				var listenerContext = listener.GetContext();
+			}
 		}
 		public void Dispose()
 		{
