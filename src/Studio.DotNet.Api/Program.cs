@@ -6,6 +6,11 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Sinx.AspNetCore.Builder;
+using Sinx.AspNetCore.Hosting.Internal;
+using Sinx.AspNetCore.Hosting.Server;
+using Sinx.AspNetCore.Hosting.Server.Abstractions;
 using Sinx.AspNetCore.Http;
 using Sinx.AspNetCore.Http.Features;
 using Studio.DotNet.Server;
@@ -24,51 +29,18 @@ namespace Studio.DotNet.Api
 	{
 		public static void Main(string[] args)
 		{
-			if (!HttpListener.IsSupported)
+			ILoggerFactory loggerFactory = new LoggerFactory().AddConsole();
+			IHttpContextFactory ctxFactory = new HttpContextFactory();
+			IServer server = new SinxServer(null, loggerFactory);
+			IServiceProvider sp = new SinxServiceProvider();
+			IApplicationBuilder appBuilder = new ApplicationBuilder(sp, server);
+			appBuilder.Use(next => ctx =>
 			{
-				Console.WriteLine("Windows XP SP2 or Server 2003 is required to use the HttpListener class.");
-				return;
-			}
-			// URI prefixes are required,
-			// for example "http://contoso.com:8080/index/".
-			var prefixes = new[] { "http://localhost:55555/" };
-			if (prefixes == null || prefixes.Length == 0)
-				throw new ArgumentException("prefixes");
-			// Create a listener.
-			var listener = new HttpListener();
-			// Add the prefixes.
-			foreach (string s in prefixes)
-			{
-				listener.Prefixes.Add(s);
-			}
-			listener.Start();
-			listener.Prefixes.ToList().ForEach(prefiex => Console.WriteLine($"Start Listene At {prefiex} ..."));
-
-			while (true)
-			{
-				var context = listener.GetContext();
-				var pipeline = new Pipeline<HttpContext>();
-				pipeline.Add(next => ctx =>
-				{
-					ctx.Response.StatusCode = 201;
-					return next(ctx);
-				}).Add(next => ctx =>
-				{
-					var strings = "<body><h1>HelloWorld</h1></body>".ToCharArray();
-					var buffer = Encoding.UTF8.GetBytes(strings, 0, strings.Length);
-					ctx.Response.Body = new MemoryStream(buffer);
-					return next(ctx);
-				});
-				var sinxHttpContext = new SinxHttpContext(context);
-				var featureCollection = new FeatureCollection();
-				featureCollection.Set(sinxHttpContext.HttpRequest);
-				featureCollection.Set(sinxHttpContext.HttpResponse);
-				var httpContext = new HttpContextFactory().Create(featureCollection);
-				pipeline.ProcessAsync(httpContext);
-				context = sinxHttpContext.ToHttpListenerContext();
-				context.Response.Close();
-			}
-			listener.Stop();
+				ctx.Response.StatusCode = 201;
+				return next(ctx);
+			});
+			RequestDelegate app = appBuilder.Build();
+			server.Start(new HostingApplication(app,ctxFactory));
 		}
 	}
 }

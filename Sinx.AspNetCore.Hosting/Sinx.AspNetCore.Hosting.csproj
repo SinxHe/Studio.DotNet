@@ -6,11 +6,20 @@
 
   <ItemGroup>
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sinx.AspNetCore.Hosting.Abstractions\Sinx.AspNetCore.Hosting.Abstractions.csproj" />
+    <ProjectReference Include="..\Sinx.AspNetCore.Hosting.Server.Abstractions\Sinx.AspNetCore.Hosting.Server.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Sinx.AspNetCore.Http.Abstractions\Sinx.AspNetCore.Http.Abstractions.csproj" />
     <ProjectReference Include="..\src\Sinx.AspNetCore.Http.Features\Sinx.AspNetCore.Http.Features.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>..\..\..\..\.nuget\packages\microsoft.extensions.logging.abstractions\1.1.1\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

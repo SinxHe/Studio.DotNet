@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Sinx.AspNetCore.Http.Features;
 
-namespace Sinx.AspNetCore.Hosting.Server.Abstractions
+// ReSharper disable once CheckNamespace
+namespace Sinx.AspNetCore.Hosting.Server
 {
 	/// <summary>
 	/// Represents an application
